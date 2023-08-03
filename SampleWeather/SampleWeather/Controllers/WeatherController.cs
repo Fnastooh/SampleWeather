@@ -19,7 +19,7 @@ namespace SampleWeather.Controllers
         [HttpGet("Temperature")]
         public IActionResult GetTemperature([FromQuery] string query)
         {
-            var result = FilreReader.Read().First(x=>x.Name==query);
+            var result = FilreReader.Read().FirstOrDefault(x=>x.Name==query);
             if (result == null)
                 return NotFound(query);
             else
@@ -30,7 +30,7 @@ namespace SampleWeather.Controllers
         [HttpPost("Temperature")]
         public IActionResult Temperature([FromBody] string query)
         {
-            var result = FilreReader.Read().First(x => x.Name == query);
+            var result = FilreReader.Read().FirstOrDefault(x => x.Name == query);
             if (result == null)
                 return NotFound(query);
             else
