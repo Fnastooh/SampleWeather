@@ -1,3 +1,8 @@
+using Newtonsoft.Json.Linq;
+using SampleWeather.Model;
+using SampleWeather.Service;
+using System;
+
 namespace SampleWeather
 {
     public class Program
@@ -12,6 +17,8 @@ namespace SampleWeather
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<IFileReader<Weather>,JsonReader<Weather>>();
 
             var app = builder.Build();
 
@@ -31,5 +38,7 @@ namespace SampleWeather
 
             app.Run();
         }
+
+        
     }
 }
